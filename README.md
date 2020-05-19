@@ -23,7 +23,7 @@ Key codes of do1erjs:
 # How to run it?
 Install node.js first.
 
-windows>node example_cwchttp.js
+windows>node example_loopservice.js
 
-linux>nohup node example_cwchttp.js </dev/null >/dev/null 2>err.error &
+linux>nohup node example_loopservice.js </dev/null >/dev/null 2>err.error &
 
