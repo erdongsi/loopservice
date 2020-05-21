@@ -48,11 +48,13 @@ class loopmgr extends events {
     makeModule(mid) {
         helper.log("["+this._name+":makeModule](",mid,") >>>>>");
         if (false == helper.isNullOrUndefined(this.modules[mid])) {
-            delete require.cache[this.modules[mid].mod];
-            //helper.log("["+this._name+":makeModule]", this.modules[mid]);
             let cfg = this.modules[mid].cfg;
+            delete require.cache[cfg.mod];
+            //helper.log("["+this._name+":makeModule]", this.modules[mid]);
+            //helper.log(cfg);
             let mod = require(cfg.mod);
             this.modules[mid].obj = new mod();
+            this.modules[mid].obj.setCfg(cfg);
             //helper.log("["+this._name+":makeModule]", this.modules[mid]);
             this.modules[mid].obj.emit('loopmgr.to.loopbase.start', mid, cfg);
         }

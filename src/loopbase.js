@@ -10,6 +10,7 @@ class loopbase extends events {
 
         this._name = name;
         this._fstop = 0;
+        this._cfg = {};
 
         this.on('loopmgr.to.loopbase.start', async (...args)=>{
             helper.log("["+this._name+"] on.args:", args);
@@ -32,6 +33,9 @@ class loopbase extends events {
                 }
             }
         });
+    }
+    setCfg(cfg) {
+        this._cfg = cfg;
     }
     doWork(callback) {
         helper.log("["+this._name+"] doWork() >>>>>");
