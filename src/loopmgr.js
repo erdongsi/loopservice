@@ -20,6 +20,7 @@ class loopmgr extends events {
             if (args.length >= 2) {
                 let mid = args[0];
                 let cfg = args[1];
+                helper.log("["+this._name+"] loop delay:", cfg.next_delay/1000, "s");
                 setTimeout(()=>{
                     this.makeModule(mid);
                 }, cfg.next_delay);

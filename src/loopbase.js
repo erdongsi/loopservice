@@ -23,7 +23,7 @@ class loopbase extends events {
 
                 helper.log("["+this._name+"] name:", name, "cfg:", cfg);
                 await new Promise((resolve,reject)=>{
-                    this.doWork((e,r)=>{
+                    this.doWork(this._cfg, (e,r)=>{
                         resolve(r);
                     });
                 });
@@ -37,8 +37,8 @@ class loopbase extends events {
     setCfg(cfg) {
         this._cfg = cfg;
     }
-    doWork(callback) {
-        helper.log("["+this._name+"] doWork() >>>>>");
+    doWork(cfg, callback) {
+        helper.log("["+this._name+"] doWork(",cfg,",callback) >>>>>");
         if (this._fstop != 0) {
             return;
         }

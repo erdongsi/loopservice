@@ -7,7 +7,7 @@ class do1er extends loopbase {
     constructor() {
         super('do1er');
     }
-    doWork(callback) {
+    doWork(cfg, callback) {
         helper.logYellow("["+this._name+"] doWork() >>>>>");
         helper.logYellow("["+this._name+"]", "hello world!");
         callback();

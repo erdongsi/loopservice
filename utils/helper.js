@@ -371,12 +371,16 @@ function callApp(param, callback) {
 }
 // 打印内存使用量
 function printMem(short) {
+    let ret = "";
     let mem = process.memoryUsage();
     if (isNullOrUndefined(short)) {
-        logYellow(JSON.stringify(mem), (mem.heapTotal/(1000*1000)).toFixed(2)+"M");
+        ret = (mem.heapTotal/(1000*1000)).toFixed(2)+"M";
+        //logYellow(JSON.stringify(mem), ret);
     } else {
-        logYellow((mem.heapTotal/(1000*1000)).toFixed(2)+"M");
+        ret = (mem.heapTotal/(1000*1000)).toFixed(2)+"M";
+        //logYellow(ret);
     }
+    return ret;
 }
 // 判断 非空
 function isNullOrUndefined(obj) {
