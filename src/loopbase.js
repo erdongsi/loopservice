@@ -13,7 +13,7 @@ class loopbase extends events {
         this._cfg = {};
 
         this.on('loopmgr.to.loopbase.start', async (...args)=>{
-            helper.log("["+this._name+"] on.args:", args);
+            //helper.log("["+this._name+"] on.args:", args);
             if (this._fstop != 0) {
                 return;
             }
@@ -21,7 +21,7 @@ class loopbase extends events {
                 let name = args[0];
                 let cfg = args[1];
 
-                helper.log("["+this._name+"] name:", name, "cfg:", cfg);
+                //helper.log("["+this._name+"] name:", name, "cfg:", cfg);
                 await new Promise((resolve,reject)=>{
                     this.doWork(this._cfg, (e,r)=>{
                         resolve(r);

@@ -16,7 +16,7 @@ class loopmgr extends events {
         this.modules = {};
 
         this.on('loopbase.to.loopmgr.finish', (...args)=>{
-            helper.log("["+this._name+"] on.args:", args);
+            //helper.log("["+this._name+"] on.args:", args);
             if (args.length >= 2) {
                 let mid = args[0];
                 let cfg = args[1];
@@ -50,11 +50,10 @@ class loopmgr extends events {
         helper.log("["+this._name+":makeModule](",mid,") >>>>>");
         if (false == helper.isNullOrUndefined(this.modules[mid])) {
             let cfg = this.modules[mid].cfg;
-            delete require.cache[cfg.mod];
-            //helper.log("["+this._name+":makeModule]", this.modules[mid]);
-            //helper.log(cfg);
-            let mod = require(cfg.mod);
-            this.modules[mid].obj = new mod();
+            if (helper.isNullOrUndefined(this.modules[mid].obj)) {
+                let mod = require(cfg.mod);
+                this.modules[mid].obj = new mod();
+            }
             this.modules[mid].obj.setCfg(cfg);
             //helper.log("["+this._name+":makeModule]", this.modules[mid]);
             this.modules[mid].obj.emit('loopmgr.to.loopbase.start', mid, cfg);
