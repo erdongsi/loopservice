@@ -1,6 +1,6 @@
 const events = require("events");
 
-const helper = require("../utils/helper");
+const helper = require("../../common/helper");
 
 class loopmgr extends events {
     static getInst() {
